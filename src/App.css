@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+/* Dashboard Specific Styles */
+.dashboard-container {
+  display: flex;
+}
+
+.dashboard-content {
+  flex-grow: 1;
+}
+
+.dashboard-stat-card {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.dashboard-chart-container {
+  height: 300px;
+  position: relative;
+}
+
+.price-calc-button {
+  margin-bottom: 12px;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #17254c;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.price-calc-button:hover {
+  background-color: #0d1b3a;
+}
+
+.info-box {
+  background-color: #f5f7fb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}

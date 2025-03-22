@@ -1,0 +1,155 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .login-form-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: white;
+    max-width: 450px;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-image {
+    width: 150px; 
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .brand-lithu {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .brand-fashions {
+    font-size: 12px;
+  }
+  
+  .welcome-text {
+    margin-bottom: 2rem;
+  }
+  
+  .welcome-text h2 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: normal;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .form-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+  }
+  
+  .remember-me input {
+    margin-right: 0.5rem;
+  }
+  
+  .forgot-password a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #0f1e3d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+  }
+  
+  .register-link {
+    text-align: center;
+  }
+  
+  .register-link a {
+    color: #0f1e3d;
+    text-decoration: none;
+  }
+  
+  .image-container {
+    flex: 3;
+    background-image: url('C:/Users/Sheky/Desktop/my-app/src/assets/Lithu (1).png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .overlay-text {
+    color: white;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .overlay-text h1 {
+    font-size: 4rem;
+    margin: 0;
+    letter-spacing: 2px;
+  }
+  
+  .overlay-text h2 {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+    }
+    
+    .login-form-container {
+      max-width: 100%;
+    }
+    
+    .image-container {
+      display: none;
+    }
+  }

@@ -5,9 +5,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fb;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Dashboard page should have no margins and padding for full-width sidebar */
+#root {
+  height: 100vh;
+}
+
+/* Global styles for dashboard components */
+.MuiDrawer-root .MuiPaper-root {
+  border-right: none;
+}
+
+.MuiListItem-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
