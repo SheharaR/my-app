@@ -40,7 +40,7 @@ const LoginPage = () => {
       <div className="login-form-container">
         <div className="logo-container">
           <div className="logo">
-            <img src={logo} alt="Lithu Fashions Logo" className="logo-image" />
+            <img src={""} alt="Lithu Fashions Logo" className="logo-image" />
           </div>
         </div>
 
