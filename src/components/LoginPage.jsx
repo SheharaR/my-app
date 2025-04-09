@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css'
 import logo from '../assets/logo.png';
+import lithuBackground from '../assets/Lithu.png';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const LoginPage = () => {
       <div className="login-form-container">
         <div className="logo-container">
           <div className="logo">
-            <img src={""} alt="Lithu Fashions Logo" className="logo-image" />
+            <img src={logo} alt="Lithu Fashions Logo" className="logo-image" />
           </div>
         </div>
 
@@ -100,8 +101,8 @@ const LoginPage = () => {
       </div>
 
       <div className="image-container">
+      <img src={lithuBackground} alt="Lithu Fashions" className="background-image" />
         <div className="overlay-text">
- 
         </div>
       </div>
     </div>

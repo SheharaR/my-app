@@ -15,8 +15,10 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import './OwnerDashboard.css';
 
 // Styled components
 const StatCard = styled(Paper)(({ theme }) => ({
@@ -53,6 +55,20 @@ const InfoBox = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
 }));
 
+const ActionButton = styled(Button)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+  backgroundColor: '#17254c',
+  color: 'white',
+  padding: theme.spacing(2),
+  borderRadius: 8,
+  width: '100%',
+  justifyContent: 'flex-start',
+  textTransform: 'none',
+  '&:hover': {
+    backgroundColor: '#0d1b3a',
+  }
+}));
+
 const Dashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -64,16 +80,16 @@ const Dashboard = () => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} className="dashboard-container">
       <Sidebar />
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box component="main" sx={{ flexGrow: 1, overflow: 'auto' }} className="main-content">
         <Header title="LITHU FASHIONS" onMenuClick={handleMenuToggle} />
         
-        <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+        <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }} className="dashboard-content">
           {/* Stats Cards Row */}
-          <Grid container spacing={3} sx={{ mb: 4 }}>
+          <Grid container spacing={3} sx={{ mb: 4 }} className="stats-container">
             <Grid item xs={12} sm={6} md={3}>
-              <StatCard>
+              <StatCard className="stat-card">
                 <CardContent sx={{ p: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <IconBox color="#e1f5fe">
@@ -93,7 +109,7 @@ const Dashboard = () => {
             </Grid>
             
             <Grid item xs={12} sm={6} md={3}>
-              <StatCard>
+              <StatCard className="stat-card">
                 <CardContent sx={{ p: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <IconBox color="#fff8e1">
@@ -113,7 +129,7 @@ const Dashboard = () => {
             </Grid>
             
             <Grid item xs={12} sm={6} md={3}>
-              <StatCard>
+              <StatCard className="stat-card">
                 <CardContent sx={{ p: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <IconBox color="#e8f5e9">
@@ -133,7 +149,7 @@ const Dashboard = () => {
             </Grid>
             
             <Grid item xs={12} sm={6} md={3}>
-              <StatCard>
+              <StatCard className="stat-card">
                 <CardContent sx={{ p: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <IconBox color="#f3e5f5">
@@ -154,10 +170,10 @@ const Dashboard = () => {
           </Grid>
           
           {/* Main Content Sections */}
-          <Grid container spacing={3}>
+          <Grid container spacing={3} className="charts-container">
             {/* Stock Report Section */}
-            <Grid item xs={12} md={8}>
-              <Paper sx={{ p: 3, borderRadius: 2, height: '100%' }}>
+            <Grid item xs={12} lg={8}>
+              <Paper sx={{ p: 3, borderRadius: 2, height: '100%' }} className="chart-paper">
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
                   <Typography variant="h6" component="h2">
                     Stock Report
@@ -175,7 +191,7 @@ const Dashboard = () => {
                 </Box>
                 
                 {/* This is a placeholder for the chart. In a real implementation, you'd use a library like recharts */}
-                <Box sx={{ height: 300, position: 'relative' }}>
+                <Box sx={{ height: 300, position: 'relative' }} className="chart-container">
                   <Box sx={{ 
                     position: 'absolute', 
                     left: 0, 
@@ -184,7 +200,7 @@ const Dashboard = () => {
                     display: 'flex', 
                     flexDirection: 'column', 
                     justifyContent: 'space-between'
-                  }}>
+                  }} className="chart-labels">
                     {['25000', '20000', '15000', '10000', '5000', '0'].map((label) => (
                       <Typography key={label} variant="caption" color="text.secondary">
                         {label}
@@ -199,9 +215,9 @@ const Dashboard = () => {
                     pl: 5, 
                     pt: 2,
                     justifyContent: 'space-between'
-                  }}>
+                  }} className="chart-bars">
                     {months.map((month, idx) => (
-                      <Box key={month} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '6%' }}>
+                      <Box key={month} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '6%' }} className="chart-bar">
                         <Box sx={{ 
                           width: '100%', 
                           display: 'flex', 
@@ -212,12 +228,12 @@ const Dashboard = () => {
                             bgcolor: '#9c27b0', 
                             height: `${Math.random() * 40 + 10}%`,
                             width: '100%',
-                          }}></Box>
+                          }} className="stock-out-bar"></Box>
                           <Box sx={{ 
                             bgcolor: '#2196f3', 
                             height: `${Math.random() * 60 + 40}%`,
                             width: '100%',
-                          }}></Box>
+                          }} className="stock-in-bar"></Box>
                         </Box>
                         <Typography variant="caption" color="text.secondary" sx={{ mt: 1 }}>
                           {month}
@@ -230,67 +246,39 @@ const Dashboard = () => {
             </Grid>
             
             {/* Price Calculations Section */}
-            <Grid item xs={12} md={4}>
-              <Paper sx={{ p: 2, borderRadius: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <Grid item xs={12} lg={4}>
+              <Paper sx={{ p: 2, borderRadius: 2, height: '100%', display: 'flex', flexDirection: 'column' }} className="price-calc-paper">
                 <Typography variant="h6" component="h2" sx={{ mb: 4 }}>
                   Price Calculations
                 </Typography>
                 
-                <Button 
-                  variant="contained" 
-                  sx={{ 
-                    mb: 2, 
-                    backgroundColor: '#17254c', 
-                    color: 'white',
-                    p: 2,
-                    borderRadius: 1,
-                    '&:hover': {
-                      backgroundColor: '#0d1b3a',
-                    }
-                  }}
-                >
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Box component="span" sx={{ mr: 2 }}>
-                        📄
-                      </Box>
-                      <Typography>Final Price</Typography>
+                <ActionButton className="action-button">
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%' }}>
+                    <Box component="span" sx={{ mr: 2 }}>
+                      📄
                     </Box>
+                    <Typography>Final Price</Typography>
                   </Box>
-                </Button>
+                </ActionButton>
                 
-                <Button 
-                  variant="contained" 
-                  sx={{ 
-                    mb: 2, 
-                    backgroundColor: '#17254c', 
-                    color: 'white',
-                    p: 2,
-                    borderRadius: 1,
-                    '&:hover': {
-                      backgroundColor: '#0d1b3a',
-                    }
-                  }}
-                >
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Box component="span" sx={{ mr: 2 }}>
-                        🏷️
-                      </Box>
-                      <Typography>On - Point Price</Typography>
+                <ActionButton className="action-button">
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%' }}>
+                    <Box component="span" sx={{ mr: 2 }}>
+                      🏷️
                     </Box>
+                    <Typography>On - Point Price</Typography>
                   </Box>
-                </Button>
+                </ActionButton>
 
                 <Box sx={{ flexGrow: 1 }} />
                 
-                <InfoBox>
+                <InfoBox className="info-box">
                   <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 500 }}>
                     Rising Employees
                   </Typography>
                 </InfoBox>
                 
-                <InfoBox sx={{ mt: 2, mb: 2 }}>
+                <InfoBox sx={{ mt: 2, mb: 2 }} className="info-box">
                   <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 500 }}>
                     Rising Clients
                   </Typography>
@@ -299,10 +287,11 @@ const Dashboard = () => {
             </Grid>
           </Grid>
           
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4, mb: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4, mb: 2 }} className="report-actions">
             <Button 
               variant="text" 
               sx={{ color: '#333' }}
+              className="see-more-btn"
             >
               See more reports
             </Button>
@@ -311,6 +300,7 @@ const Dashboard = () => {
               variant="text" 
               endIcon={<ArrowDropDownIcon />} 
               sx={{ color: '#2196f3' }}
+              className="report-dropdown"
             >
               Report 1
             </Button>

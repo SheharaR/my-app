@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SignupPage.css';
+import logo from '../assets/logo.png';
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +28,13 @@ const SignupPage = () => {
 
   return (
     <div className="signup-container">
-      <div className="image-container">
-        <img src="C:\Users\Sheky\Desktop\my-app\src\assets\Lithu (1).png" alt="Lithu Fashion bg" />
+      <div className="logo-container">
+          <div className="logo">
+            <img src={logo} alt="Lithu Fashions Logo" className="logo-image" />
+          </div>
+        </div>
+        <div className="image-container">
+        <img src="C:\Users\Sheky\Desktop\my-app\src\assets\Lithu.png" alt="Lithu Fashion bg" />
         <div className="brand-overlay">
         </div>
       </div>

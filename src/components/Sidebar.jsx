@@ -18,7 +18,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -30,13 +30,15 @@ import PaidIcon from '@mui/icons-material/Paid';
 import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 import PeopleIcon from '@mui/icons-material/People';
 import GroupIcon from '@mui/icons-material/Group';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import axios from 'axios';
 
 const Sidebar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));  
   const [open, setOpen] = useState(false);  
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
+  const location = useLocation();  
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -69,12 +71,27 @@ const Sidebar = () => {
   
     fetchUsername();
   }, []);
+
+  // Check if current path matches menu item path
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
   
+  // Menu items configuration
+  const menuItems = [
+    { text: "Dashboard", icon: <DashboardIcon />, path: "/dashboard" },
+    { text: "Inventory", icon: <InventoryIcon />, path: "/inventory" },
+    { text: "Orders", icon: <ShoppingCartIcon />, path: "/orders" },
+    { text: "Transactions", icon: <PaidIcon />, path: "/transactions" },
+    { text: "Debts", icon: <MoneyOffIcon />, path: "/debts" },
+    { text: "Clients", icon: <PeopleIcon />, path: "/clients" },
+    { text: "Employees", icon: <GroupIcon />, path: "/employees" },
+  ];
 
   return (
-    <Box>
+    <Box className="sidebar-container">
       {isMobile && (
-        <AppBar position="sticky">
+        <AppBar position="sticky" elevation={3}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -85,104 +102,149 @@ const Sidebar = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6">LITHU FASHIONS</Typography>
+            <Typography variant="h6" sx={{ 
+              fontWeight: 600,
+              letterSpacing: '0.5px',
+              flexGrow: 1
+            }}>
+              LITHU FASHIONS
+            </Typography>
           </Toolbar>
         </AppBar>
       )}
 
       <Drawer
+        className={open ? "sidebar open" : "sidebar"}
         sx={{
-          width: 240,
+          width: 260,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: 240,
+            width: 260,
             boxSizing: 'border-box',
-            backgroundColor: '#333',  
+            background: 'linear-gradient(180deg, #2c3e50 0%, #1a2639 100%)',
             color: 'white',
-            paddingTop: '20px',
+            padding: 0,
+            boxShadow: '2px 0 10px rgba(0, 0, 0, 0.1)',
           },
         }}
         variant={isMobile ? 'temporary' : 'permanent'}
         anchor="left"
-        open={open}
+        open={isMobile ? open : true}
         onClose={toggleDrawer}
         ModalProps={{
           keepMounted: true,  
         }}
       >
-        {/* Default Avatar and Username */}
-        <Box sx={{ textAlign: 'center', padding: '10px', marginBottom: '20px' }}>
-          <Avatar sx={{ bgcolor: 'gray', width: '100px', height: '100px', margin: '0 auto' }}>
+        {/* Avatar and Username Section */}
+        <Box className="avatar-container">
+          <Avatar 
+            className="sidebar-avatar"
+            sx={{ 
+              bgcolor: '#3498db', 
+              width: '90px', 
+              height: '90px', 
+              boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+              border: '3px solid rgba(255,255,255,0.3)'
+            }}
+          >
             <PersonIcon sx={{ fontSize: '50px' }} />
           </Avatar>
+          
           {loading ? (
             <CircularProgress sx={{ color: 'white', mt: 1 }} size={20} />
           ) : (
-            <Typography variant="subtitle1" sx={{ color: 'white', fontWeight: 600, mt: 1 }}>
+            <Typography 
+              className="sidebar-username"
+              variant="subtitle1" 
+              sx={{ 
+                color: 'white', 
+                fontWeight: 600,
+                letterSpacing: '0.5px'
+              }}
+            >
               {username || 'Guest User'}
             </Typography>
           )}
         </Box>
 
-        <List>
-          <Divider sx={{ bgcolor: 'white' }} />
-          <ListItem button component={Link} to="/inventory">
-            <ListItemIcon>
-              <InventoryIcon sx={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Inventory" />
-          </ListItem>
-          <Divider sx={{ bgcolor: 'white' }} />
-          <ListItem button component={Link} to="/orders">
-            <ListItemIcon>
-              <ShoppingCartIcon sx={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Orders" />
-          </ListItem>
-          <Divider sx={{ bgcolor: 'white' }} />
-          <ListItem button component={Link} to="/transactions">
-            <ListItemIcon>
-              <PaidIcon sx={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Transactions" />
-          </ListItem>
-          <Divider sx={{ bgcolor: 'white' }} />
-          <ListItem button component={Link} to="/debts">
-            <ListItemIcon>
-              <MoneyOffIcon sx={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Debts" />
-          </ListItem>
-          <Divider sx={{ bgcolor: 'white' }} />
-          <ListItem button component={Link} to="/clients">
-            <ListItemIcon>
-              <PeopleIcon sx={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Clients" />
-          </ListItem>
-          <Divider sx={{ bgcolor: 'white' }} />
-          <ListItem button component={Link} to="/employees">
-            <ListItemIcon>
-              <GroupIcon sx={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Employees" />
-          </ListItem>
+        <List sx={{ mt: 1, padding: 0 }}>
+          {menuItems.map((item, index) => (
+            <React.Fragment key={item.text}>
+              {index > 0 && <Divider className="sidebar-divider" />}
+              <ListItem 
+                button 
+                component={Link} 
+                to={item.path}
+                className={`sidebar-menu-item ${isActive(item.path) ? 'active' : ''}`}
+                sx={{
+                  padding: '12px 20px',
+                  margin: '4px 8px',
+                  borderRadius: '8px',
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transform: 'translateX(5px)'
+                  },
+                  ...(isActive(item.path) && {
+                    backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                  })
+                }}
+              >
+                <ListItemIcon sx={{ color: 'rgba(255, 255, 255, 0.8)', minWidth: '40px' }}>
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText 
+                  primary={item.text} 
+                  primaryTypographyProps={{
+                    fontSize: '14px',
+                    fontWeight: 500
+                  }}
+                />
+              </ListItem>
+            </React.Fragment>
+          ))}
         </List>
 
-        <Box sx={{ position: 'absolute', bottom: '20px', width: '80%', left: '10px', backgroundColor: '#1976d2', borderRadius: '10px' }}>
+        <Box className="logout-button-container" sx={{ 
+          padding: '16px', 
+          position: 'absolute', 
+          bottom: '20px', 
+          width: 'calc(100% - 32px)',
+        }}>
           <Button
             variant="contained"
             fullWidth
             onClick={handleLogout}
             startIcon={<ExitToAppIcon />}
-            sx={{ textTransform: 'uppercase', fontWeight: 'bold' }}
+            className="logout-button"
+            sx={{ 
+              background: 'linear-gradient(45deg, #e74c3c, #c0392b)',
+              color: 'white',
+              borderRadius: '8px',
+              padding: '10px 16px',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              '&:hover': {
+                background: 'linear-gradient(45deg, #c0392b, #e74c3c)',
+                boxShadow: '0 6px 10px rgba(0,0,0,0.2)',
+                transform: 'translateY(-2px)'
+              }
+            }}
           >
             Logout
           </Button>
         </Box>
       </Drawer>
 
-      <Box sx={{ marginLeft: isMobile ? 0 : 240, transition: 'margin 0.3s' }}>
+      <Box className="content" sx={{ 
+        marginLeft: isMobile ? 0 : '260px', 
+        transition: 'margin 0.3s',
+        width: isMobile ? '100%' : 'calc(100% - 260px)',
+      }}>
+        {/* Content goes here */}
       </Box>
     </Box>
   );

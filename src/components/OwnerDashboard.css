@@ -1,0 +1,209 @@
+/* Dashboard.css */
+
+/* Global Dashboard Layout */
+.dashboard-container {
+    min-height: 100vh;
+    background-color: #f5f7fb;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    min-height: 100vh;
+    background-color: #f5f7fb;
+  }
+  
+  .dashboard-content {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    background-color: #272727;
+  }
+  
+  .company-logo {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .company-logo:hover {
+    transform: scale(1.05);
+  }
+  
+  .sidebar-item {
+    margin-bottom: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .sidebar-item:hover {
+    background-color: rgba(115, 82, 199, 0.1) !important;
+  }
+  
+  .logout-button {
+    transition: all 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Header Styles */
+  .dashboard-header {
+    z-index: 1100;
+  }
+  
+  .header-title {
+    letter-spacing: 0.5px;
+  }
+  
+  .search-box {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+  }
+  
+  .search-box:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  
+  .header-icon {
+    margin-left: 8px;
+  }
+  
+  /* Stats Cards */
+  .stats-container {
+    margin-bottom: 24px;
+  }
+  
+  .stat-card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Chart Section */
+  .charts-container {
+    height: 100%;
+  }
+  
+  .chart-paper, .price-calc-paper {
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .chart-container {
+    position: relative;
+    padding-left: 30px;
+  }
+  
+  .chart-labels {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .chart-bars {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .chart-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 7%;
+  }
+  
+  .stock-in-bar, .stock-out-bar {
+    border-radius: 2px;
+    width: 100%;
+  }
+  
+  /* Price Calculation Section */
+  .action-button {
+    transition: all 0.3s ease;
+    border-radius: 8px !important;
+    margin-bottom: 16px;
+  }
+  
+  .action-button:hover {
+    transform: translateX(5px);
+  }
+  
+  .info-box {
+    border-radius: 8px;
+    background-color: #f5f7fb;
+    padding: 16px;
+    margin-top: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+  }
+  
+  .info-box:hover {
+    background-color: #eef2f8;
+  }
+  
+  /* Report Actions */
+  .report-actions {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .see-more-btn, .report-dropdown {
+    transition: all 0.2s ease;
+  }
+  
+  .see-more-btn:hover, .report-dropdown:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .chart-bars {
+      padding-left: 20px;
+    }
+    
+    .chart-bar {
+      width: 7%;
+    }
+  }
+  
+  @media (max-width: 960px) {
+    .stats-container {
+      flex-direction: column;
+    }
+    
+    .chart-container {
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .dashboard-content {
+      padding: 16px;
+    }
+    
+    .chart-container {
+      height: 200px;
+    }
+    
+    .report-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }

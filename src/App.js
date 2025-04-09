@@ -4,10 +4,14 @@ import LoginPage from "./components/LoginPage";
 import "./components/LoginPage.css";
 import SignupPage from "./components/SignupPage";
 import "./components/SignupPage.css";
-import Dashboard from "./components/Dashboard";
+import OwnerDashboard from "./components/OwnerDashboard";
+import Sidebar from './components/Sidebar';
+import "./components/Sidebar.css";
+import Header from './components/Header';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import "./components/Sidebar.css";
+import LandingPage from "./components/LandingPage";
 
 // Create a theme instance
 const theme = createTheme({
@@ -52,15 +56,16 @@ function App() {
       <CssBaseline />
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} /> {/* Default Route - Login */}
+          <Route path="/" element={<LandingPage />} /> {/* Default Route - Login */}
+          <Route path="/Login" element={<LoginPage />} /> 
           <Route path="/signup" element={<SignupPage />} /> {/* Signup Page Route */}
-          <Route path="/dashboard" element={<Dashboard />} /> {/* Owner Dashboard */}
-          <Route path="/inventory" element={<Dashboard />} />
-          <Route path="/orders" element={<Dashboard />} />
-          <Route path="/transactions" element={<Dashboard />} />
-          <Route path="/debts" element={<Dashboard />} />
-          <Route path="/clients" element={<Dashboard />} />
-          <Route path="/employees" element={<Dashboard />} />
+          <Route path="/dashboard" element={<OwnerDashboard />} /> {/* Owner Dashboard */}
+          <Route path="/inventory" element={<OwnerDashboard />} />
+          <Route path="/orders" element={<OwnerDashboard />} />
+          <Route path="/transactions" element={<OwnerDashboard />} />
+          <Route path="/debts" element={<OwnerDashboard />} />
+          <Route path="/clients" element={<OwnerDashboard />} />
+          <Route path="/employees" element={<OwnerDashboard />} />
         </Routes>
       </Router>
     </ThemeProvider>
