@@ -1,0 +1,127 @@
+/* InventoryList.css */
+.inventory-list-container {
+    background-color: #f4f7fc;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .heading {
+    color: #333;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .add-button {
+    background-color: #3f51b5;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #303f9f;
+  }
+  
+  .search-filter-container {
+    margin-bottom: 20px;
+  }
+  
+  .search-field .MuiOutlinedInput-root {
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .MuiTableHead-root {
+    background-color: #f7f9fc;
+  }
+  
+  .MuiTableHead-root .MuiTableCell-root {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .material-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .status-available {
+    background-color: #e6f7ee;
+    color: #00a854;
+  }
+  
+  .status-low {
+    background-color: #fff7e6;
+    color: #fa8c16;
+  }
+  
+  .status-out {
+    background-color: #fff1f0;
+    color: #f5222d;
+  }
+  
+  .delete-button {
+    color: #f5222d;
+  }
+  
+  .delete-button:hover {
+    background-color: #fff1f0;
+  }
+  
+  .empty-state {
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .loading-text {
+    padding: 40px;
+    color: #5f6368;
+  }
+  
+  @media (max-width: 600px) {
+    .inventory-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .inventory-list-container {
+      padding: 20px;
+      max-width: 100%;
+    }
+    
+    .add-button {
+      width: 100%;
+    }
+  }

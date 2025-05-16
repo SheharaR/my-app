@@ -147,21 +147,20 @@ const LandingPage = () => {
         <div className="container">
           <div className="about-content">
             <div className="about-img">
-              {/* REPLACE WITH ABOUT IMAGE: Store interior or fashion design workshop, 800x600px */}
-              <img src="/path/to/about-image.jpg" alt="About Lithu Fashions" />
-            </div>
-            <div className="about-text">
-              <h2>Our Story</h2>
-              <p>Lithu Fashions was founded in 2015 with a vision to bring premium quality clothing and accessories to fashion enthusiasts. We believe in sustainable fashion and ethical manufacturing practices.</p>
-              <p>Our team of talented designers works tirelessly to create unique pieces that combine contemporary trends with timeless elegance. Each item in our collection is crafted with attention to detail and commitment to quality.</p>
-              <p>At Lithu Fashions, we're not just selling clothes - we're offering a lifestyle that embodies sophistication, confidence, and individuality.</p>
-              <a href="#" className="btn">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials */}
+                      <img src={require('../assets/ourstory.png')} alt="About Lithu Fashions" />
+                    </div>
+                    <div className="about-text">
+                      <h2>Our Story</h2>
+                      <p>Lithu Fashions was founded in 2015 with a vision to bring premium quality clothing and accessories to fashion enthusiasts. We believe in sustainable fashion and ethical manufacturing practices.</p>
+                      <p>Our team of talented designers works tirelessly to create unique pieces that combine contemporary trends with timeless elegance. Each item in our collection is crafted with attention to detail and commitment to quality.</p>
+                      <p>At Lithu Fashions, we're not just selling clothes - we're offering a lifestyle that embodies sophistication, confidence, and individuality.</p>
+                      <a href="#" className="btn">Learn More</a>
+                    </div>
+                    </div>
+                  </div>
+                  </section>
+                  
+                  {/* Testimonials */}
       <section className="testimonials" style={{ backgroundImage: `url('/path/to/testimonial-bg.jpg')` }}>
         {/* REPLACE WITH TESTIMONIAL BACKGROUND: Subtle fashion-related image, will be darkened by overlay */}
         <div className="container">
